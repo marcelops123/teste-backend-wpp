@@ -29,6 +29,6 @@ const isAuth_1 = __importDefault(require("../middleware/isAuth"));
 const authRoutes = express_1.Router();
 authRoutes.post("/signup", UserController.store);
 authRoutes.post("/login", SessionController.store);
-//authRoutes.post("/refresh_token", SessionController.update);
+authRoutes.post("/refresh_token", SessionController.update);
 authRoutes.delete("/logout", isAuth_1.default, SessionController.remove);
 exports.default = authRoutes;
