@@ -22,12 +22,12 @@ const isAuthApi = (req, res, next) => __awaiter(void 0, void 0, void 0, function
     const [, token] = authHeader.split(" ");
     try {
         const getToken = yield ListSettingByValueService_1.default(token);
-        // if (!getToken) {
-        //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-        // }
-        // if (getToken.value !== token) {
-        //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-        // }
+        if (!getToken) {
+            throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        }
+        if (getToken.value !== token) {
+            throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        }
     }
     catch (err) {
         console.log(err);

@@ -31,9 +31,9 @@ exports.store = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.update = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const token = req.cookies.jrt;
-    // if (!token) {
-    //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-    // }
+    if (!token) {
+        throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+    }
     const { user, newToken, refreshToken } = yield RefreshTokenService_1.RefreshTokenService(res, token);
     SendRefreshToken_1.SendRefreshToken(res, refreshToken);
     return res.json({ token: newToken, user });

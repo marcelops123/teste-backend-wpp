@@ -8,9 +8,9 @@ const AppError_1 = __importDefault(require("../errors/AppError"));
 const auth_1 = __importDefault(require("../config/auth"));
 const isAuth = (req, res, next) => {
     const authHeader = req.headers.authorization;
-    // if (!authHeader) {
-    //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-    // }
+    if (!authHeader) {
+        throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+    }
     const [, token] = authHeader.split(" ");
     try {
         const decoded = jsonwebtoken_1.verify(token, auth_1.default.secret);
@@ -20,9 +20,9 @@ const isAuth = (req, res, next) => {
             profile
         };
     }
-    catch (err) {
-        throw new AppError_1.default("Invalid token. We'll try to assign a new one on next request", 403);
-    }
+    // catch (err) {
+    //     throw new AppError_1.default("Invalid token. We'll try to assign a new one on next request", 403);
+    // }
     return next();
 };
 exports.default = isAuth;
