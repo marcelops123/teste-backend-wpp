@@ -61,6 +61,6 @@ app.use((err, req, res, _) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(err.statusCode).json({ error: err.message });
     }
     logger_1.logger.error(err);
-    return res.status(500).json({ error: "Internal server error" });
+   console.log("ada")
 }));
 exports.default = app;
