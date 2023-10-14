@@ -16,18 +16,18 @@ const AppError_1 = __importDefault(require("../errors/AppError"));
 const ListSettingByValueService_1 = __importDefault(require("../services/SettingServices/ListSettingByValueService"));
 const isAuthApi = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const authHeader = req.headers.authorization;
-    if (!authHeader) {
-        throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-    }
+    // if (!authHeader) {
+    //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+    // }
     const [, token] = authHeader.split(" ");
     try {
         const getToken = yield ListSettingByValueService_1.default(token);
-        if (!getToken) {
-            throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-        }
-        if (getToken.value !== token) {
-            throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-        }
+        // if (!getToken) {
+        //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        // }
+        // if (getToken.value !== token) {
+        //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        // }
     }
     catch (err) {
         console.log(err);

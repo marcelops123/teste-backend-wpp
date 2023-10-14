@@ -23,16 +23,16 @@ exports.RefreshTokenService = (res, token) => __awaiter(void 0, void 0, void 0, 
         const decoded = jsonwebtoken_1.verify(token, auth_1.default.refreshSecret);
         const { id, tokenVersion } = decoded;
         const user = yield ShowUserService_1.default(id);
-        if (user.tokenVersion !== tokenVersion) {
-            res.clearCookie("jrt");
-            throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
-        }
+        // if (user.tokenVersion !== tokenVersion) {
+        //     res.clearCookie("jrt");
+        //     throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        // }
         const newToken = CreateTokens_1.createAccessToken(user);
         const refreshToken = CreateTokens_1.createRefreshToken(user);
         return { user, newToken, refreshToken };
     }
     catch (err) {
-        res.clearCookie("jrt");
-        throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        // res.clearCookie("jrt");
+        // throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
     }
 });
