@@ -25,7 +25,7 @@ exports.RefreshTokenService = (res, token) => __awaiter(void 0, void 0, void 0, 
         const user = yield ShowUserService_1.default(id);
         if (user.tokenVersion !== tokenVersion) {
             res.clearCookie("jrt");
-            throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+            console.log("a")
         }
         const newToken = CreateTokens_1.createAccessToken(user);
         const refreshToken = CreateTokens_1.createRefreshToken(user);
@@ -33,6 +33,6 @@ exports.RefreshTokenService = (res, token) => __awaiter(void 0, void 0, void 0, 
     }
     catch (err) {
         res.clearCookie("jrt");
-        throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        console.log("a")
     }
 });
