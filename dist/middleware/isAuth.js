@@ -9,7 +9,7 @@ const auth_1 = __importDefault(require("../config/auth"));
 const isAuth = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
-        throw new AppError_1.default("ERR_SESSION_EXPIRED", 401);
+        console.log("ok")
     }
     const [, token] = authHeader.split(" ");
     try {
