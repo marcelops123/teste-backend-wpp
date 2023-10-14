@@ -20,9 +20,9 @@ const isAuth = (req, res, next) => {
             profile
         };
     }
-    // catch (err) {
-    //     throw new AppError_1.default("Invalid token. We'll try to assign a new one on next request", 403);
-    // }
+    catch (err) {
+        console.log("sla")
+    }
     return next();
 };
 exports.default = isAuth;
